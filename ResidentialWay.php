@@ -16,12 +16,9 @@ final class ResidentialWay extends HighWay
     //methods
     public function addVehicle(Vehicle $vehicle): string
     {
-        if ($vehicle instanceof Car) {
-            $this->setCurrentVehicles($vehicle);
-            $message = 'Ok mon gars';
-        } else {
-            $message = 'Pas ok mon gars';
-        }
-        return $message;
+         
+    
+        $this->currentVehicles[] = $vehicle;
+    
     }
 }
