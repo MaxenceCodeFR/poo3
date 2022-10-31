@@ -13,6 +13,7 @@ class Car extends Vehicle
     //properties
     protected string $energy;
     protected int $energyLevel;
+    private bool $hasParkBrake;
 
     //methods
     public function __construct(string $color, int $nbSeats, string $energy)
@@ -20,8 +21,22 @@ class Car extends Vehicle
         parent::__construct($color, $nbSeats);
         $this->setEnergy($energy);
     }
+    public function start(): string
+    {
+        if ($this->getHasParkBrake() === true) {
+            throw new Exception('ATTENTION FREIN A MAIN');
+        } else {
+            $this->currentSpeed = 12;
+            return 'Je sais pas si ça fonctionne en vrai la quête avait l\'air plutot simple';
+        }
+    }
 
     //getters
+    
+    public function getHasParkBrake(): bool
+    {
+        return $this->hasParkBrake;
+    }
     public function getEnergy(): string
     {
         return $this->energy;
@@ -33,6 +48,11 @@ class Car extends Vehicle
     }
 
     //setters
+     public function setHasParkBrake(bool $hasParkBrake): void
+    {
+        $this->hasParkBrake = $hasParkBrake;
+    }
+    
     public function setEnergyLevel(int $energyLevel): void
     {
         $this->energyLevel = $energyLevel;
