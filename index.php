@@ -10,12 +10,22 @@ require_once 'Truck.php';
 $camionPouetPouet = new Truck('black', 3, 90);
 
 $alfaromeo = new Car('green', 4, 400);
+$alfaromeo->setHasParkBrake(true);
 $bike = new Bicycle('blue', 12);
 $skateboard = new Bicycle('black', 0);
 $motorWay = new MotorWay();
 $pedestrianWay = new PedestrianWay();
 $residentialWay = new ResidentialWay();
 
+try {
+    echo $alfaromeo->start();
+} catch (Exception $e) {
+    echo $e->getMessage() . ' enlève le main a frein';
+    $alfaromeo->setHasParkBrake(false);
+} finally {
+    echo 'Ma voiture roule comme un DONUT';
+}
+echo $motorWay->addVehicle($alfaromeo);
 
 echo $motorWay->addVehicle($alfaromeo);
 
